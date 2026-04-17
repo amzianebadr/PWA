@@ -1,10 +1,12 @@
-const CACHE_NAME = "budgetflow-cache-v1";
+const CACHE_NAME = "budgetflow-cache-v2";
 const CORE_ASSETS = [
-  "./",
-  "./index.html",
-  "./styles.css",
-  "./app.js",
-  "./manifest.webmanifest",
+  "/",
+  "/index.html",
+  "/styles.css",
+  "/app.js",
+  "/manifest.webmanifest",
+  "/icons/icon-192.png",
+  "/icons/icon-512.png",
 ];
 
 self.addEventListener("install", (event) => {
@@ -50,10 +52,10 @@ self.addEventListener("fetch", (event) => {
         })
         .catch(() => {
           if (event.request.mode === "navigate") {
-            return caches.match("./index.html");
+            return caches.match("/index.html");
           }
 
-          return caches.match("./");
+          return caches.match("/");
         });
     })
   );

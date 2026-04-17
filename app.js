@@ -21,7 +21,12 @@ let deferredInstallPrompt = null;
 
 initializeInstallUi();
 render();
-registerServiceWorker();
+
+if ("serviceWorker" in navigator) {
+  window.addEventListener("load", () => {
+    navigator.serviceWorker.register("/sw.js");
+  });
+}
 
 transactionForm.addEventListener("submit", (event) => {
   event.preventDefault();
@@ -255,16 +260,4 @@ function escapeHtml(value) {
   };
 
   return String(value).replace(/[&<>"']/g, (character) => map[character]);
-}
-
-async function registerServiceWorker() {
-  if (!("serviceWorker" in navigator)) {
-    return;
-  }
-
-  try {
-    await navigator.serviceWorker.register("./sw.js");
-  } catch (error) {
-    console.error("Service worker registration failed:", error);
-  }
 }
