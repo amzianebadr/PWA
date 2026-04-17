@@ -2,8 +2,10 @@
   "name": "BudgetFlow",
   "short_name": "BudgetFlow",
   "description": "A modern personal budget tracker for managing income and expenses offline.",
-  "start_url": "./index.html",
+  "start_url": "/",
+  "scope": "/",
   "display": "standalone",
+  "display_override": ["window-controls-overlay", "standalone"],
   "background_color": "#f3f7fb",
   "theme_color": "#0f172a",
   "icons": [
